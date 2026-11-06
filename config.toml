@@ -1,0 +1,36 @@
+# mtputty_sync config. NetBox URL/token come from env vars netbox_url / netbox_token.
+
+mtputty_xml = 'C:\Users\ChadAiena\AppData\Roaming\TTYPlus\mtputty.xml'
+
+# Everything the tool generates lives under this one top-level folder.
+# Your hand-made folders (EJGH, lakeview, ...) are never touched.
+root_folder = "NetBox"
+
+# Tree layout, outermost first. Allowed: "site", "role"  (device is always the leaf)
+tree = ["site", "role"]
+
+# --- Role filter -----------------------------------------------------------
+# Role names exactly as in NetBox. Empty `include` = all roles except `exclude`.
+include_roles = []
+exclude_roles = [
+  "Access Point",   # 4517 devices
+  "IP Phone",       # 1376 devices
+  "Mitel",
+  "Unknown",
+]
+# Add a role by removing it from exclude_roles (or listing it in include_roles).
+
+# --- Device filter ---------------------------------------------------------
+include_status = ["active"]      # NetBox statuses: active, staged, failed, maintenance-mode, ...
+skip_without_primary_ip = true   # 872 devices have no primary IP
+exclude_sites = []               # e.g. ["Unknown"]
+
+# --- Display name ----------------------------------------------------------
+# Suffixes removed from the end of NetBox device names (display only), e.g. "bhh-mdf-a1(1)" -> "bhh-mdf-a1".
+# If two devices in the same folder end up with the same name, both are kept.
+strip_name_suffixes = ["(1)"]
+
+# --- Session settings (UserName and Password are always written blank; set them in MTPutty) ---
+saved_session = "Default Settings"   # PuTTY saved session to launch
+default_protocol = "ssh"             # "ssh" | "telnet"
+telnet_if_custom_field = "telnet"    # NetBox custom field; true => telnet. "" to disable

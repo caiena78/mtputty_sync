@@ -1,0 +1,9 @@
+/target
+
+# generated output: contains your session tree (hostnames/IPs)
+mtputty.dryrun.xml
+*.bak
+mtputty.xml
+
+# secrets, in case a token ever lands in a local file
+.env
