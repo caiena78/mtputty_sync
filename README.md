@@ -5,7 +5,7 @@ Builds the MTPutty session tree from NetBox. It reads sites, device roles and de
 ## Quick start
 
 ```powershell
-cd "C:\Users\ChadAiena\OneDrive - Sapphire Health Technology Services\Documents\rust\mtputty_sync"
+cd C:\path\to\mtputty_sync
 cargo run --release -- --dry-run   # preview: writes mtputty.dryrun.xml, changes nothing
 # close MTPutty, then:
 cargo run --release                # real sync
