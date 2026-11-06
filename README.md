@@ -37,6 +37,15 @@ Produces `target\release\mtputty_sync.exe`.
 - A real run saves the old file as `mtputty.xml.bak`, then rewrites `mtputty.xml` in place.
 - It refuses to run while `mtputty.exe` is open. MTPutty rewrites the file on exit and would discard the sync.
 
+### Package for distribution
+```powershell
+.\package.ps1
+```
+Builds the release exe and recreates `dist\` containing `mtputty_sync.exe`, `config.toml` and `README.md` side by side. Copy that folder to the target machine, then:
+1. Edit `mtputty_xml` in `config.toml` to that user's own `mtputty.xml` path (the shipped value is a local path).
+2. Set the `netbox_url` and `netbox_token` environment variables.
+3. Run `.\mtputty_sync.exe --dry-run`, then `.\mtputty_sync.exe` with MTPutty closed.
+
 ### What gets written
 - One top-level folder (`root_folder`), rebuilt from scratch each run. Anything you add inside it by hand is lost on the next sync.
 - Each device has `ServerName` set to its NetBox primary IP, and `UserName` and `Password` left blank. Set those in MTPutty.

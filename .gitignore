@@ -7,3 +7,6 @@ mtputty.xml
 
 # secrets, in case a token ever lands in a local file
 .env
+
+# packaged deployment folder
+/dist
