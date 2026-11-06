@@ -10,3 +10,6 @@ mtputty.xml
 
 # packaged deployment folder
 /dist
+
+# executables
+*.exe
